@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
-   <description></description>
-   <name>Causes</name>
+   <description>Validate a simple channel.&#xd;
+Not Data Driven.</description>
+   <name>ValidateChannelSample</name>
    <tag></tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
@@ -10,12 +11,12 @@
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <rerunImmediately>true</rerunImmediately>
-   <testSuiteGuid>bd84c208-c9be-4094-a531-fcbcb5f31132</testSuiteGuid>
+   <testSuiteGuid>e2dd1735-aa30-4fbf-8d97-bd536e31f7c2</testSuiteGuid>
    <testCaseLink>
-      <guid>9c2c179d-2c43-4117-a735-9534f68f53f6</guid>
+      <guid>3f147b07-5c0c-47c9-850a-b1440dde231f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/causes/ValidateCauses</testCaseId>
+      <testCaseId>Test Cases/channels/ValidateChannelSample</testCaseId>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
 </TestSuiteEntity>
