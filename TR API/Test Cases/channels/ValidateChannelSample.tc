@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>ValidateCauses</name>
+   <name>ValidateChannelSample</name>
    <tag>causes</tag>
    <comment></comment>
-   <testCaseGuid>d8064c49-9469-4bf9-b5e7-ddfde0137bbc</testCaseGuid>
+   <testCaseGuid>bfd221c2-2a74-4c86-b0ca-400ecf29bd1c</testCaseGuid>
 </TestCaseEntity>
