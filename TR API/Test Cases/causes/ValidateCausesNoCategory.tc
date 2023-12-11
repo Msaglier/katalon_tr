@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>ValidateCausesNoCategory</name>
+   <tag>causes</tag>
+   <comment></comment>
+   <testCaseGuid>d8064c49-9469-4bf9-b5e7-ddfde0137bbc</testCaseGuid>
+</TestCaseEntity>
