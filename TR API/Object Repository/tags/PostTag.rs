@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
    <description></description>
-   <name>GetSeverity</name>
+   <name>PostTag</name>
    <tag></tag>
-   <elementGuidId>e00cdced-a1be-4b12-aa6b-f1576d1690ef</elementGuidId>
+   <elementGuidId>17b7fe17-748d-4972-9c6f-2c5820d7ebc0</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
    <autoUpdateContent>false</autoUpdateContent>
@@ -11,7 +11,7 @@
    <followRedirects>false</followRedirects>
    <httpBody></httpBody>
    <httpBodyContent>{
-  &quot;text&quot;: &quot;{\n  \&quot;key\&quot;: \&quot;katalon_post\&quot;,\n  \&quot;type\&quot;: \&quot;string\&quot;\n}&quot;,
+  &quot;text&quot;: &quot;{\n  \&quot;name\&quot;: \&quot;katalon_tag_post\&quot;\n}&quot;,
   &quot;contentType&quot;: &quot;application/json&quot;,
   &quot;charset&quot;: &quot;UTF-8&quot;
 }</httpBodyContent>
@@ -56,19 +56,11 @@
       <value>${authorization}</value>
       <webElementGuid>9a959480-c547-4f1c-a77d-bd488f8cf012</webElementGuid>
    </httpHeaderProperties>
-   <httpHeaderProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>severity_id</name>
-      <type>Main</type>
-      <value>severity_id</value>
-      <webElementGuid>c8283c76-3062-4b96-9b17-0c70f3fe30df</webElementGuid>
-   </httpHeaderProperties>
    <katalonVersion>9.0.0</katalonVersion>
    <maxResponseSize>0</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
-   <restRequestMethod>GET</restRequestMethod>
-   <restUrl>${GlobalVariable.base_url}/severities/${severity_id}</restUrl>
+   <restRequestMethod>POST</restRequestMethod>
+   <restUrl>${GlobalVariable.base_url}/tags</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
@@ -104,13 +96,6 @@
       <id>482613bd-970f-4eda-97c7-3d86542f805c</id>
       <masked>false</masked>
       <name>authorization</name>
-   </variables>
-   <variables>
-      <defaultValue>'uuid'</defaultValue>
-      <description></description>
-      <id>caeb32b3-61ba-46c1-b115-5acdcc0c6a77</id>
-      <masked>false</masked>
-      <name>severity_id</name>
    </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 
