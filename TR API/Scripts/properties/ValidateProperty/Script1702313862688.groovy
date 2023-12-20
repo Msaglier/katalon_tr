@@ -17,43 +17,41 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-'I create a Channel, nominal case'
-response = WS.sendRequest(findTestObject('channels/PostChannelSample', [('x_customer') : GlobalVariable.x_customer_id, ('x_coverage') : GlobalVariable.x_coverage
+'I create a Property'
+response = WS.sendRequest(findTestObject('properties/PostProperty', [('x_customer') : GlobalVariable.x_customer_id, ('x_coverage') : GlobalVariable.x_coverage
             , ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization]))
 
 'I receive a code 201 : creation OK.'
 WS.verifyResponseStatusCode(response, 201)
 
-'I verify that I have "katalon_channel_post" as channel name.'
-WS.verifyElementPropertyValue(response, 'channel.name', 'katalon_channel_post')
+'I verify that I have a key "katalon_property_post".'
+WS.verifyElementPropertyValue(response, 'property.key', 'katalon_property_post')
 
-'I save the channel Uuid'
-channel_id = WS.getElementPropertyValue(response, 'channel.id')
+'I save the property Uuid'
+property_id = WS.getElementPropertyValue(response, 'property.id')
 
-'I get the specific channel'
-get_response = WS.sendRequest(findTestObject('channels/GetSpecificChannel', [('x_customer') : GlobalVariable.x_customer_id
-            , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization
-            , ('channel_id') : channel_id]))
+'I get the specific property'
+get_response = WS.sendRequest(findTestObject('properties/GetProperty', [('x_customer') : GlobalVariable.x_customer_id, ('x_coverage') : GlobalVariable.x_coverage
+            , ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization, ('property_id') : property_id]))
 
-'I receive a code 200 : this channel exists.'
+'I receive a code 200 : this property exists.'
 WS.verifyResponseStatusCode(get_response, 200)
 
-'I put this specific channel with a new name.'
-put_response = WS.sendRequest(findTestObject('channels/PutSpecificChannel', [('x_customer') : GlobalVariable.x_customer_id
-            , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization
-            , ('channel_id') : channel_id]))
+'I put this specific property with a new value for Key.'
+put_response = WS.sendRequest(findTestObject('properties/PutProperty', [('x_customer') : GlobalVariable.x_customer_id, ('x_coverage') : GlobalVariable.x_coverage
+            , ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization, ('property_id') : property_id]))
 
-'I receive a code 200 : this channel has been edited.'
+'I receive a code 200 : this property has been edited.'
 WS.verifyResponseStatusCode(put_response, 200)
 
-'I verify that I have a value "katalon_channel_put" for name.'
-WS.verifyElementPropertyValue(put_response, 'channel.name', 'katalon_channel_put')
+'I verify that I have a value "katalon_property_put" for Key.'
+WS.verifyElementPropertyValue(put_response, 'property.key', 'katalon_property_put')
 
-'I delete this specific channel.'
-delete_response = WS.sendRequest(findTestObject('channels/DeleteSpecificChannel', [('x_customer') : GlobalVariable.x_customer_id
+'I delete this specific property.'
+delete_response = WS.sendRequest(findTestObject('properties/DeleteProperty', [('x_customer') : GlobalVariable.x_customer_id
             , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization
-            , ('channel_id') : channel_id]))
+            , ('property_id') : property_id]))
 
-'I receive a code 204 : this channel has been deleted.'
+'I receive a code 204 : this property has been deleted.'
 WS.verifyResponseStatusCode(delete_response, 204)
 

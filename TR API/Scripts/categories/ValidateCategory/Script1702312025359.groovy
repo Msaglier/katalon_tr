@@ -20,7 +20,7 @@ import org.openqa.selenium.Keys as Keys
 WS.comment('NOK : https://navitia.atlassian.net/jira/software/c/projects/BO/issues/BO-2789')
 
 'I create a Category'
-response = WS.sendRequest(findTestObject('Categories/PostCategory', [('x_customer') : GlobalVariable.x_customer_id, ('x_coverage') : GlobalVariable.x_coverage
+response = WS.sendRequest(findTestObject('categories/PostCategory', [('x_customer') : GlobalVariable.x_customer_id, ('x_coverage') : GlobalVariable.x_coverage
             , ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization]))
 
 'I receive a code 201 : creation OK.'
@@ -33,7 +33,7 @@ WS.verifyElementPropertyValue(response, 'category.name', 'katalon_category_post'
 category_id = WS.getElementPropertyValue(response, 'category.id')
 
 'I get the specific category'
-get_response = WS.sendRequest(findTestObject('Categories/GetSpecificCategory', [('x_customer') : GlobalVariable.x_customer_id
+get_response = WS.sendRequest(findTestObject('categories/GetSpecificCategory', [('x_customer') : GlobalVariable.x_customer_id
             , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization
             , ('category_id') : category_id]))
 
@@ -41,7 +41,7 @@ get_response = WS.sendRequest(findTestObject('Categories/GetSpecificCategory', [
 WS.verifyResponseStatusCode(get_response, 200)
 
 'I edit the name of this specific category.'
-put_response = WS.sendRequest(findTestObject('Categories/PutSpecificCategory', [('x_customer') : GlobalVariable.x_customer_id
+put_response = WS.sendRequest(findTestObject('categories/PutSpecificCategory', [('x_customer') : GlobalVariable.x_customer_id
             , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization
             , ('category_id') : category_id]))
 
@@ -52,7 +52,7 @@ WS.verifyResponseStatusCode(put_response, 200)
 WS.verifyElementPropertyValue(put_response, 'category.name', 'katalon_category_put')
 
 'I delete this specific category.'
-delete_response = WS.sendRequest(findTestObject('Categories/DeleteSpecificCategory', [('x_customer') : GlobalVariable.x_customer_id
+delete_response = WS.sendRequest(findTestObject('categories/DeleteSpecificCategory', [('x_customer') : GlobalVariable.x_customer_id
             , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization
             , ('category_id') : category_id]))
 
