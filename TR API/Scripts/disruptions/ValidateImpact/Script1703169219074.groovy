@@ -30,9 +30,6 @@ WS.verifyElementPropertyValue(response, 'disruption.reference', 'katalon_disrupt
 'I save the disruption Uuid'
 disruption_id = WS.getElementPropertyValue(response, 'disruption.id')
 
-'I save the impact_id Uuid'
-impact_id_1 = WS.getElementPropertyValue(response, 'disruption.impact[0].id')
-
 'I get the specific disruption'
 get_response = WS.sendRequest(findTestObject('disruptions/GetDisruption', [('x_customer') : GlobalVariable.x_customer_id
             , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization
@@ -41,10 +38,13 @@ get_response = WS.sendRequest(findTestObject('disruptions/GetDisruption', [('x_c
 'I receive a code 200 : this disruption exists.'
 WS.verifyResponseStatusCode(get_response, 200)
 
+'I save the impact_id Uuid'
+impact_id_1 = WS.getElementPropertyValue(get_response, 'disruption.impacts.impacts[0].id')
+
 'I get the specific impact'
 get_response_impact_1 = WS.sendRequest(findTestObject('impacts/GetImpact', [('x_customer') : GlobalVariable.x_customer_id
             , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization
-            , ('disruption_id') : 'uuid']))
+            , ('disruption_id') : disruption_id, ('impact_id') : impact_id_1]))
 
 'I receive a code 200 : this impact exists.'
 WS.verifyResponseStatusCode(get_response_impact_1, 200)
@@ -52,42 +52,43 @@ WS.verifyResponseStatusCode(get_response_impact_1, 200)
 'I put this specific impact with a new channel_msg'
 put_response_impact_1 = WS.sendRequest(findTestObject('impacts/PutImpact', [('x_customer') : GlobalVariable.x_customer_id
             , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization
-            , ('disruption_id') : 'uuid', ('impact_id') : 'uuid']))
+            , ('disruption_id') : disruption_id, ('impact_id') : impact_id_1]))
 
 'I receive a code 200 : this impact has been edited.'
 WS.verifyResponseStatusCode(put_response_impact_1, 200)
 
-'I verify that I have a value "katalon_tag_put" for Name.'
-WS.verifyElementPropertyValue(put_response_impact_1, 'impact[0].message[0].text', 'katalon_impact_put')
+'I verify that I have a value "katalon_impact_put" as message'
+WS.verifyElementPropertyValue(put_response_impact_1, 'impact.messages[0].text', 'katalon_impact_PUT')
 
 'I post a new impact for this disruption.'
 post_response_impact_2 = WS.sendRequest(findTestObject('impacts/PostImpact', [('x_customer') : GlobalVariable.x_customer_id
-            , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization]))
+            , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization
+            , ('disruption_id') : disruption_id]))
 
 'I receive a code 200 : this second impact exists.'
-WS.verifyResponseStatusCode(post_response_impact_2, 200)
+WS.verifyResponseStatusCode(post_response_impact_2, 201)
 
 'I delete the first impact'
 delete_response_impact_1 = WS.sendRequest(findTestObject('impacts/DeleteImpact', [('x_customer') : GlobalVariable.x_customer_id
             , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization
-            , ('disruption_id') : 'uuid']))
+            , ('disruption_id') : disruption_id, ('impact_id') : impact_id_1]))
 
 'I receive a code 204 : this disruption has been deleted.'
-WS.verifyResponseStatusCode(delete_response, 204)
+WS.verifyResponseStatusCode(delete_response_impact_1, 204)
 
 'I get the specific disruption after.'
 get_response_after_delete = WS.sendRequest(findTestObject('disruptions/GetDisruption', [('x_customer') : GlobalVariable.x_customer_id
             , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization
             , ('disruption_id') : disruption_id]))
 
-nb_impacts = WS.getElementsCount(get_response_after_delete, 'disruption.impacts')
+nb_impacts = WS.getElementsCount(get_response_after_delete, 'disruption.impacts.impacts')
 
 WS.verifyEqual(nb_impacts, 1)
 
 'I delete the whole disruption.'
 delete_response = WS.sendRequest(findTestObject('disruptions/DeleteDisruption', [('x_customer') : GlobalVariable.x_customer_id
             , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization
-            , ('disruption_id') : 'uuid']))
+            , ('disruption_id') : disruption_id, ('impact_id') : impact_id]))
 
 'I receive a code 204 : this disruption has been deleted.'
 WS.verifyResponseStatusCode(delete_response, 204)

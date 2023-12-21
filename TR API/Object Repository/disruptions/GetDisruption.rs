@@ -68,7 +68,7 @@
    <maxResponseSize>0</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
    <restRequestMethod>GET</restRequestMethod>
-   <restUrl>${GlobalVariable.base_url}/disruptions/${disruption_id}</restUrl>
+   <restUrl>${GlobalVariable.base_url}/disruptions/${disruption_id}?depth=2</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
