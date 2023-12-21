@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
    <description></description>
-   <name>PostDisruption</name>
+   <name>PutDisruptionAllPtObjects</name>
    <tag></tag>
-   <elementGuidId>e0391bb8-b0b3-47a4-ba9a-ef2cce3d56db</elementGuidId>
+   <elementGuidId>e1aa2798-2d80-464d-83c6-b80de60ffce4</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
    <autoUpdateContent>false</autoUpdateContent>
@@ -11,7 +11,7 @@
    <followRedirects>false</followRedirects>
    <httpBody></httpBody>
    <httpBodyContent>{
-  &quot;text&quot;: &quot;{\n}&quot;,
+  &quot;text&quot;: &quot;{\n  \&quot;author\&quot;: \&quot;msa\&quot;,\n  \&quot;contributor\&quot;: \&quot;shortterm.tr_qastif\&quot;,\n  \&quot;reference\&quot;: \&quot;katalon_disruption_put\&quot;,\n  \&quot;cause\&quot;: {\n    \&quot;id\&quot;: \&quot;3a412398-5693-11e7-9ac2-005056a41224\&quot;\n  },\n  \&quot;tags\&quot;: [],\n  \&quot;impacts\&quot;: [\n    {\n      \&quot;messages\&quot;: [\n        {\n          \&quot;text\&quot;: \&quot;katalon PUT\&quot;,\n          \&quot;send_notification\&quot;: false,\n          \&quot;notification_date\&quot;: \&quot;2023-11-06T12:58:42Z\&quot;,\n          \&quot;channel\&quot;: {\n            \&quot;id\&quot;: \&quot;47b4ac3a-517c-11ee-b3ff-0a58a9feac02\&quot;\n          }\n        }        \n      ],\n      \&quot;send_notifications\&quot;: false,\n      \&quot;severity\&quot;: {\n        \&quot;id\&quot;: \&quot;8ec16f86-0c1d-11ee-9def-0a58a9feac02\&quot;\n      },\n      \&quot;objects\&quot;: [\n        {\n          \&quot;id\&quot;: \&quot;line:IDFM:C00224\&quot;,\n          \&quot;type\&quot;:\&quot;line\&quot;\n        }\n      ],\n      \&quot;notification_date\&quot;: \&quot;2023-11-06T12:58:42Z\&quot;,\n      \&quot;application_periods\&quot;: [\n        {\n          \&quot;begin\&quot;: \&quot;2023-11-29T12:57:00Z\&quot;,\n          \&quot;end\&quot;: \&quot;2024-12-29T14:57:00Z\&quot;\n        }\n      ]\n    }\n  ],\n  \&quot;publication_period\&quot;: {\n    \&quot;begin\&quot;: \&quot;2023-11-29T12:57:00Z\&quot;,\n    \&quot;end\&quot;: \&quot;2024-12-29T14:57:00Z\&quot;\n  }\n}&quot;,
   &quot;contentType&quot;: &quot;application/json&quot;,
   &quot;charset&quot;: &quot;UTF-8&quot;
 }</httpBodyContent>
@@ -56,11 +56,19 @@
       <value>${authorization}</value>
       <webElementGuid>9a959480-c547-4f1c-a77d-bd488f8cf012</webElementGuid>
    </httpHeaderProperties>
+   <httpHeaderProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>disruption_id</name>
+      <type>Main</type>
+      <value>disruption_id</value>
+      <webElementGuid>c8283c76-3062-4b96-9b17-0c70f3fe30df</webElementGuid>
+   </httpHeaderProperties>
    <katalonVersion>9.0.0</katalonVersion>
    <maxResponseSize>0</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
-   <restRequestMethod>POST</restRequestMethod>
-   <restUrl>${GlobalVariable.base_url}/disruptions</restUrl>
+   <restRequestMethod>PUT</restRequestMethod>
+   <restUrl>${GlobalVariable.base_url}/disruptions/${disruption_id}</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
@@ -96,6 +104,13 @@
       <id>482613bd-970f-4eda-97c7-3d86542f805c</id>
       <masked>false</masked>
       <name>authorization</name>
+   </variables>
+   <variables>
+      <defaultValue>'uuid'</defaultValue>
+      <description></description>
+      <id>caeb32b3-61ba-46c1-b115-5acdcc0c6a77</id>
+      <masked>false</masked>
+      <name>disruption_id</name>
    </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 

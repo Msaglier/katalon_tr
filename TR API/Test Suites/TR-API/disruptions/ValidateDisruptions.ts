@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>ValidateTags</name>
+   <name>ValidateDisruptions</name>
    <tag></tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
@@ -10,12 +10,12 @@
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <rerunImmediately>true</rerunImmediately>
-   <testSuiteGuid>6cbaf69f-8f60-43c3-8732-dc04390d3657</testSuiteGuid>
+   <testSuiteGuid>112e779a-0280-4ff4-879b-09951a364fa5</testSuiteGuid>
    <testCaseLink>
-      <guid>84af60e6-c537-48f2-807f-f79d9d4fdeda</guid>
+      <guid>c347f4a6-d73f-4a19-bae5-23a872e81e72</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/disruptions/ValidateDisruption</testCaseId>
+      <testCaseId>Test Cases/tags/ValidateTag</testCaseId>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
 </TestSuiteEntity>
