@@ -18,7 +18,7 @@ import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
 'I create a Disruption'
-response = WS.sendRequest(findTestObject('disruptions/PostDisruptionAllPtObjects', [('x_customer') : GlobalVariable.x_customer_id, ('x_coverage') : GlobalVariable.x_coverage
+response = WS.sendRequest(findTestObject('disruptions/PostDisruptionOneImpactAllTypes', [('x_customer') : GlobalVariable.x_customer_id, ('x_coverage') : GlobalVariable.x_coverage
             , ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization]))
 
 'I receive a code 201 : creation OK.'
@@ -39,7 +39,7 @@ get_response = WS.sendRequest(findTestObject('disruptions/GetDisruption', [('x_c
 WS.verifyResponseStatusCode(get_response, 200)
 
 'I put this specific disruption with a new reference.'
-put_response = WS.sendRequest(findTestObject('disruptions/PutDisruptionAllPtObjects', [('x_customer') : GlobalVariable.x_customer_id
+put_response = WS.sendRequest(findTestObject('disruptions/PutDisruptionOneImpactAllTypes', [('x_customer') : GlobalVariable.x_customer_id
             , ('x_coverage') : GlobalVariable.x_coverage, ('x_contributor') : GlobalVariable.x_contributors, ('authorization') : GlobalVariable.authorization
             , ('disruption_id') : disruption_id]))
 
