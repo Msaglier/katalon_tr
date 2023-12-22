@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
    <description></description>
-   <name>GetDisruption</name>
+   <name>GetImpact</name>
    <tag></tag>
-   <elementGuidId>23e530b3-1965-4061-ab04-b29a5a629d3a</elementGuidId>
+   <elementGuidId>90c83a63-4367-407e-a8f1-2582963066f8</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
    <autoUpdateContent>false</autoUpdateContent>
@@ -64,11 +64,19 @@
       <value>disruption_id</value>
       <webElementGuid>c8283c76-3062-4b96-9b17-0c70f3fe30df</webElementGuid>
    </httpHeaderProperties>
+   <httpHeaderProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>impact_id</name>
+      <type>Main</type>
+      <value>impact_id</value>
+      <webElementGuid>aca33d45-6061-432e-bf68-cfd751607d4c</webElementGuid>
+   </httpHeaderProperties>
    <katalonVersion>9.0.0</katalonVersion>
    <maxResponseSize>0</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
    <restRequestMethod>GET</restRequestMethod>
-   <restUrl>${GlobalVariable.base_url}/disruptions/${disruption_id}?depth=2</restUrl>
+   <restUrl>${GlobalVariable.base_url}/disruptions/${disruption_id}/impacts/${impact_id}</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
@@ -111,6 +119,13 @@
       <id>caeb32b3-61ba-46c1-b115-5acdcc0c6a77</id>
       <masked>false</masked>
       <name>disruption_id</name>
+   </variables>
+   <variables>
+      <defaultValue>'uuid'</defaultValue>
+      <description></description>
+      <id>faf3a6b4-bfa6-46f5-9295-a9866c38a577</id>
+      <masked>false</masked>
+      <name>impact_id</name>
    </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 
