@@ -64,11 +64,19 @@
       <value>disruption_id</value>
       <webElementGuid>c8283c76-3062-4b96-9b17-0c70f3fe30df</webElementGuid>
    </httpHeaderProperties>
+   <httpHeaderProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>impact_id</name>
+      <type>Main</type>
+      <value>impact_id</value>
+      <webElementGuid>b8648767-6d8f-4340-968c-881c06b5dad9</webElementGuid>
+   </httpHeaderProperties>
    <katalonVersion>9.0.0</katalonVersion>
    <maxResponseSize>0</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
    <restRequestMethod>DELETE</restRequestMethod>
-   <restUrl>${GlobalVariable.base_url}/disruptions/${disruption_id}</restUrl>
+   <restUrl>${GlobalVariable.base_url}/disruptions/${disruption_id}/impacts/${impact_id}</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
@@ -111,6 +119,13 @@
       <id>caeb32b3-61ba-46c1-b115-5acdcc0c6a77</id>
       <masked>false</masked>
       <name>disruption_id</name>
+   </variables>
+   <variables>
+      <defaultValue>'uuid'</defaultValue>
+      <description></description>
+      <id>30bbb5f5-50eb-422d-980c-d33283088b93</id>
+      <masked>false</masked>
+      <name>impact_id</name>
    </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 
